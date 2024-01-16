@@ -1,8 +1,11 @@
-import { Inter } from 'next/font/google'
+import Theme from '@/app/theme'
 
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+import '@fontsource/roboto/300.css'
+import '@fontsource/roboto/400.css'
+import '@fontsource/roboto/500.css'
+import '@fontsource/roboto/700.css'
 
 export const metadata = {
   title: {
@@ -15,7 +18,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="zh-CN">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <Theme>
+          {children}
+        </Theme>
+      </body>
     </html>
   )
 }
