@@ -10,7 +10,23 @@ import Button from '@mui/material/Button'
 
 import Dialog from '@/app/ui/dialog'
 
-export default function ItemCard() {
+export default function ItemCard(props) {
+
+    const {
+        create_time,
+        uuid,
+        group_name,
+        star,
+        description,
+        detail,
+        cover,
+        torrent,
+        download_url
+    } = props['info']
+
+    const date = new Date(create_time)
+    const time = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}`
+
     return (
         <Card>
             <CardHeader
@@ -19,8 +35,8 @@ export default function ItemCard() {
                         U
                     </Avatar>
                 }
-                title="风暴角Project"
-                subheader="永远滴神 | 2023.01.23"
+                title={group_name}
+                subheader={`${star} | ${time}`}
             />
             <CardMedia
                 component="img"
@@ -30,13 +46,11 @@ export default function ItemCard() {
             />
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                    This impressive paella is a perfect party dish and a fun meal to cook
-                    together with your guests. Add 1 cup of frozen peas along with the mussels,
-                    if you like.
+                    {description}
                 </Typography>
             </CardContent>
             <CardActions>
-                <Dialog description={'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.'} />
+                <Dialog description={detail} />
                 <Button variant="contained" startIcon={<ContentCopyIcon />}>
                     复制磁链
                 </Button>

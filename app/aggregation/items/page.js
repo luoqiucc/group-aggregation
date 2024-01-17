@@ -1,8 +1,10 @@
-import ItemCard from '@/app/ui/aggregation/items/item-card'
+import ItemCardWrapper from '@/app/ui/aggregation/items/item-card-wrapper'
 import Grid from '@mui/material/Unstable_Grid2'
 import TitleCard from '@/app/ui/aggregation/title-card'
+import { findItem } from '@/service/item'
 
-export default function Page() {
+export default async function Page() {
+    const itemList = await findItem('1', '5')
 
     const TitleCardTitle = '资源汇总'
     const TitleCardSubTitle = '========'
@@ -19,33 +21,7 @@ export default function Page() {
                         target={'home'} />
                 </Grid>
 
-                <Grid xs={12} sm={6} md={4} lg={3}>
-                    <ItemCard />
-                </Grid>
-                <Grid xs={12} sm={6} md={4} lg={3}>
-                    <ItemCard />
-                </Grid>
-                <Grid xs={12} sm={6} md={4} lg={3}>
-                    <ItemCard />
-                </Grid>
-                <Grid xs={12} sm={6} md={4} lg={3}>
-                    <ItemCard />
-                </Grid>
-                <Grid xs={12} sm={6} md={4} lg={3}>
-                    <ItemCard />
-                </Grid>
-                <Grid xs={12} sm={6} md={4} lg={3}>
-                    <ItemCard />
-                </Grid>
-                <Grid xs={12} sm={6} md={4} lg={3}>
-                    <ItemCard />
-                </Grid>
-                <Grid xs={12} sm={6} md={4} lg={3}>
-                    <ItemCard />
-                </Grid>
-                <Grid xs={12} sm={6} md={4} lg={3}>
-                    <ItemCard />
-                </Grid>
+                <ItemCardWrapper items={itemList} />
             </Grid>
         </>
     )
